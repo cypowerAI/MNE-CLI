@@ -1,0 +1,40 @@
+{
+  "steps": [
+    {
+      "command": "raw.load",
+      "args": {"path": "demo_raw.fif"},
+      "as": "raw"
+    },
+    {
+      "command": "raw.filter",
+      "args": {"raw": "{{raw}}", "l_freq": 1, "h_freq": 40},
+      "as": "clean"
+    },
+    {
+      "command": "raw.events",
+      "args": {"raw": "{{clean}}"},
+      "as": "events"
+    },
+    {
+      "command": "epochs.build",
+      "args": {
+        "raw": "{{clean}}",
+        "events": "{{events}}",
+        "tmin": -0.2,
+        "tmax": 0.8,
+        "event_id": {"audio": 1, "visual": 2}
+      },
+      "as": "epochs"
+    },
+    {
+      "command": "epochs.average",
+      "args": {"epochs": "{{epochs}}", "by": "event"},
+      "as": "evoked"
+    },
+    {
+      "command": "psd",
+      "args": {"raw": "{{clean}}"},
+      "as": "psd_summary"
+    }
+  ]
+}

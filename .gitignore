@@ -1,0 +1,36 @@
+# Byte / OS junk
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+
+# mne-cli runtime state
+.mne-cli/
+
+# Generated data and outputs (regenerate with `mne-cli dataset demo`)
+*.fif
+*.fif.gz
+*.h5
+*.npy
+*.npz
+*.edf
+*.bdf
+*.vhdr
+*.set
+*.html
+!docs/**/*.html
+
+# Editors
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
